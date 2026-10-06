@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>Fab Plugin</title>
+	<script>
+		(async () => {
+			if (window.ue) {
+				const url = await window.ue?.fab?.geturl?.();
+				if (url) {
+					window.location.replace(url);
+					return;
+				}
+			}
+			
+			setTimeout(async () => {
+				const url = await window.ue?.fab?.geturl?.();
+				if (url) {
+					window.location.replace(url);
+				} else {
+					console.error('Fab: bridge object (window.ue.fab) not available after 500ms');
+				}
+			}, 500);
+		})();
+	</script>
+</head>
+<body style="background-color: #202024">
+</body>
+</html>
